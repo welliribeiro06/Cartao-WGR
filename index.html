@@ -3,18 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WGR Tech Solutions - Cartão Digital</title>
+    <title>WGR Tech Solutions</title>
     <style>
-        /* Estilos Globais */
-        body, html {
-            margin: 0; padding: 0; width: 100%; height: 100%;
-            /* Fundo animado */
-            background: linear-gradient(135deg, #12141d 0%, #1a1e2b 50%, #12141d 100%);
+        /* Fundo Gradiente Animado */
+        body, html { 
+            margin: 0; padding: 0; width: 100%; height: 100%; 
+            background: linear-gradient(135deg, #0d0f16 0%, #1a1e2b 50%, #0d0f16 100%);
             background-size: 400% 400%;
             animation: gradientBG 15s ease infinite;
-            color: #ffffff;
-            font-family: 'Helvetica Neue', Arial, sans-serif;
-            overflow: hidden; 
+            color: #fff; font-family: 'Segoe UI', Tahoma, sans-serif; 
+            overflow-x: hidden; 
         }
 
         @keyframes gradientBG {
@@ -23,111 +21,58 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* TELA DE BOOT (TERMINAL) - Mantém o fundo preto p/ esconder o gradiente no início */
-        #boot-screen {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background-color: #0d0f16; z-index: 9999;
-            display: flex; flex-direction: column; justify-content: center;
-            padding: 20px; box-sizing: border-box; font-family: monospace;
-            color: #00f2fe; font-size: 14px;
-        }
-
-        /* ... restante do seu código (main-card, btn, etc) permanece igual ... */
+        /* TELA DE BOOT */
+        #boot-screen { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #0d0f16; z-index: 999; display: flex; flex-direction: column; justify-content: center; padding: 20px; box-sizing: border-box; transition: opacity 1s; }
+        
+        /* CARTÃO (Responsivo) */
+        #main-card { opacity: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; padding: 20px; transition: opacity 1s; }
+        
+        .logo-img { width: 220px; margin-bottom: 20px; }
+        h1 { margin: 10px 0; font-size: 2rem; color: #00f2fe; }
+        p { margin-bottom: 30px; font-size: 1.1rem; color: #cbd5e0; text-align: center; max-width: 500px; }
+        
+        /* Botões */
+        .btn { display: block; width: 100%; max-width: 350px; padding: 18px; margin: 12px 0; background: #1e2230; color: #fff; text-decoration: none; border-radius: 10px; border-left: 5px solid #00f2fe; text-align: center; font-weight: bold; transition: 0.3s; }
+        .btn:hover { background: #2a2f42; transform: scale(1.02); }
     </style>
 </head>
 <body>
 
-    <!-- TELA DE INICIALIZAÇÃO -->
     <div id="boot-screen">
-        <div id="console-container"></div>
-        <div><span id="typing-text"></span><span class="cursor"></span></div>
+        <div id="console-container" style="font-family: monospace; color: #00f2fe; max-width: 600px; margin: 0 auto;"></div>
     </div>
 
-    <!-- CARTÃO DIGITAL -->
     <div id="main-card">
-        <div class="logo-container">
-            <img src="logowgr.png" style="width: 180px; margin-bottom: 20px;">
-        </div>
+        <img src="logowgr.png" class="logo-img" alt="Logo WGR">
+        <h1>WGR Tech Solutions</h1>
+        <p>Soluções em TI Proativa, Backup Blindado e Automação de Processos para sua empresa.</p>
         
-        <!-- EDIÇÃO DOS DADOS -->
-        <h1>Wellington Gorgen Ribeiro</h1>
-        <p class="cargo">Gestão de Tecnologia & Infraestrutura</p>
-
-        <div style="text-align: left; color: #cbd5e0; font-size: 13px; margin-bottom: 30px; line-height: 1.6; border: 1px solid #1e2230; padding: 15px; border-radius: 8px;">
-            <strong style="color: #00f2fe; display: block; margin-bottom: 8px; text-align: center;">O QUE A WGR FAZ POR VOCÊ:</strong>
-            • 🛡️ <b>Gestão de TI Proativa:</b> Suporte técnico ágil e sem interrupções.<br>
-            • ☁️ <b>Segurança e Backup:</b> Proteção blindada contra ataques e perda de dados.<br>
-            • ⚙️ <b>Automação & CRM:</b> Sistemas sob medida para vender mais e errar menos.<br>
-            • 🌐 <b>Infraestrutura:</b> Redes estáveis, configuradas para alta performance.
-        </div>
-
-        <a href="https://wa.me/555491638651" class="btn btn-whatsapp" target="_blank">
-            <span class="btn-icon">🟢</span> Falar no WhatsApp
-        </a>
-        
-        <a href="mailto:contato@wgrsolution.com.br" class="btn">
-            <span class="btn-icon">📧</span> contato@wgrsolution.com.br
-        </a>
-
-        <a href="#" class="btn" target="_blank">
-            <span class="btn-icon">📄</span> Baixar Proposta Comercial
-        </a>
+        <a href="https://wa.me/5554999999999" class="btn">🟢 Falar no WhatsApp</a>
+        <a href="mailto:contato@wgrsolution.com.br" class="btn">📧 contato@wgrsolution.com.br</a>
+        <a href="#" class="btn">📄 Baixar Proposta</a>
     </div>
 
-    <!-- SCRIPT DE ANIMAÇÃO DO TERMINAL -->
     <script>
-        const bootScreen = document.getElementById('boot-screen');
-        const mainCard = document.getElementById('main-card');
-        const consoleContainer = document.getElementById('console-container');
-        const typingText = document.getElementById('typing-text');
-        
-        const bootSequence = [
-            "C:\\> Inicializando WGR_System_Boot...",
-            "Carregando protocolos de segurança corporativa... [OK]",
-            "Verificando integridade da rede... [OK]",
-            "Sincronizando banco de dados... [OK]",
-            "Acesso liberado."
-        ];
-
-        let lineIndex = 0;
-
-        function typeLine(text, callback) {
-            let charIndex = 0;
-            typingText.textContent = "";
-            const interval = setInterval(() => {
-                typingText.textContent += text[charIndex];
-                charIndex++;
-                if (charIndex >= text.length) {
-                    clearInterval(interval);
-                    setTimeout(callback, 300);
-                }
-            }, 30);
-        }
+        let i = 0;
+        const container = document.getElementById('console-container');
+        const lines = ["Inicializando WGR_System...", "Carregando módulos de segurança...", "Sincronizando infraestrutura...", "Acesso liberado."];
 
         function run() {
             if (i < lines.length) {
-                typeLine(lines[i], () => { i++; run(); });
+                const p = document.createElement('p');
+                p.textContent = "> " + lines[i];
+                container.appendChild(p);
+                i++;
+                setTimeout(run, 800);
             } else {
-                // FASE DE TRANSIÇÃO
-                console.log("Transição iniciada");
-                const boot = document.getElementById('boot-screen');
-                const card = document.getElementById('main-card');
-                
-                // Oculta a tela preta
-                boot.style.transition = "opacity 1s";
-                boot.style.opacity = "0";
-                
-                // Força a exibição do cartão
+                document.getElementById('boot-screen').style.opacity = "0";
                 setTimeout(() => {
-                    boot.style.display = "none";
-                    card.style.display = "flex";
-                    card.style.opacity = "1";
-                    console.log("Cartão revelado");
+                    document.getElementById('boot-screen').style.display = "none";
+                    document.getElementById('main-card').style.opacity = "1";
                 }, 1000);
             }
         }
         run();
-        window.onload = () => { setTimeout(runSequence, 500); };
     </script>
 </body>
 </html>
