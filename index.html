@@ -104,27 +104,29 @@
             }, 30);
         }
 
-        function runSequence() {
-            if (lineIndex < bootSequence.length) {
-                typeLine(bootSequence[lineIndex], () => {
-                    const finishedLine = document.createElement('div');
-                    finishedLine.className = 'console-line';
-                    finishedLine.style.opacity = '1';
-                    finishedLine.textContent = bootSequence[lineIndex];
-                    consoleContainer.appendChild(finishedLine);
-                    typingText.textContent = "";
-                    lineIndex++;
-                    runSequence();
-                });
+        function run() {
+            if (i < lines.length) {
+                typeLine(lines[i], () => { i++; run(); });
             } else {
+                // FASE DE TRANSIÇÃO
+                console.log("Transição iniciada");
+                const boot = document.getElementById('boot-screen');
+                const card = document.getElementById('main-card');
+                
+                // Oculta a tela preta
+                boot.style.transition = "opacity 1s";
+                boot.style.opacity = "0";
+                
+                // Força a exibição do cartão
                 setTimeout(() => {
-                    bootScreen.classList.add('hide-boot');
-                    mainCard.classList.add('show-card');
-                    document.body.style.overflow = 'auto'; 
-                }, 500);
+                    boot.style.display = "none";
+                    card.style.display = "flex";
+                    card.style.opacity = "1";
+                    console.log("Cartão revelado");
+                }, 1000);
             }
         }
-
+        run();
         window.onload = () => { setTimeout(runSequence, 500); };
     </script>
 </body>
