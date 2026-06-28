@@ -76,38 +76,56 @@
 
     <!-- SCRIPT DE ANIMAÇÃO DO TERMINAL -->
     <script>
-    const bootScreen = document.getElementById('boot-screen');
-    const mainCard = document.getElementById('main-card');
-    const consoleContainer = document.getElementById('console-container');
-    
-    const bootSequence = [
-        "C:\\> Inicializando WGR_System_Boot...",
-        "Carregando protocolos de segurança corporativa... [OK]",
-        "Verificando integridade da rede... [OK]",
-        "Sincronizando banco de dados... [OK]",
-        "Acesso liberado."
-    ];
+        const bootScreen = document.getElementById('boot-screen');
+        const mainCard = document.getElementById('main-card');
+        const consoleContainer = document.getElementById('console-container');
+        const typingText = document.getElementById('typing-text');
+        
+        const bootSequence = [
+            "C:\\> Inicializando WGR_System_Boot...",
+            "Carregando protocolos de segurança corporativa... [OK]",
+            "Verificando integridade da rede... [OK]",
+            "Sincronizando banco de dados... [OK]",
+            "Acesso liberado."
+        ];
 
-    let lineIndex = 0;
+        let lineIndex = 0;
 
-    function runSequence() {
-        if (lineIndex < bootSequence.length) {
-            const p = document.createElement('div');
-            p.textContent = bootSequence[lineIndex];
-            p.style.marginBottom = "10px";
-            consoleContainer.appendChild(p);
-            lineIndex++;
-            setTimeout(runSequence, 800);
-        } else {
-            // FORÇA A TROCA DE TELA
-            console.log("Animação concluída. Trocando tela...");
-            bootScreen.style.display = "none"; 
-            mainCard.style.opacity = "1";
-            mainCard.style.visibility = "visible";
+        function typeLine(text, callback) {
+            let charIndex = 0;
+            typingText.textContent = "";
+            const interval = setInterval(() => {
+                typingText.textContent += text[charIndex];
+                charIndex++;
+                if (charIndex >= text.length) {
+                    clearInterval(interval);
+                    setTimeout(callback, 300);
+                }
+            }, 30);
         }
-    }
 
-    runSequence();
-</script>
+        function runSequence() {
+            if (lineIndex < bootSequence.length) {
+                typeLine(bootSequence[lineIndex], () => {
+                    const finishedLine = document.createElement('div');
+                    finishedLine.className = 'console-line';
+                    finishedLine.style.opacity = '1';
+                    finishedLine.textContent = bootSequence[lineIndex];
+                    consoleContainer.appendChild(finishedLine);
+                    typingText.textContent = "";
+                    lineIndex++;
+                    runSequence();
+                });
+            } else {
+                setTimeout(() => {
+                    bootScreen.classList.add('hide-boot');
+                    mainCard.classList.add('show-card');
+                    document.body.style.overflow = 'auto'; 
+                }, 500);
+            }
+        }
+
+        window.onload = () => { setTimeout(runSequence, 500); };
+    </script>
 </body>
 </html>
