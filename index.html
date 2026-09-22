@@ -219,6 +219,14 @@ footer dd a{color:var(--ink)}
 
 /* admin */
 #admin{position:fixed;inset:0;z-index:100;background:var(--bg);overflow:auto;font-size:16px}
+.gatewrap{min-height:100%;display:flex;align-items:center;justify-content:center;padding:24px}
+.gatebox{width:min(360px,100%);background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:28px 26px;text-align:center}
+.gatebox .mark2{width:40px;height:40px;margin:0 auto 14px;border-radius:10px;background:var(--cyan);opacity:.15}
+.gatebox h2{font-size:1.3rem;margin-bottom:6px}
+.gatebox p{color:var(--muted);font-size:.92rem;margin-bottom:18px}
+.gatebox input{width:100%;font:inherit;font-size:1rem;color:var(--ink);background:#050A10;border:1.5px solid var(--line2);border-radius:8px;padding:12px 14px;text-align:center;letter-spacing:.05em}
+.gatebox .btn{width:100%;margin-top:14px}
+.gateerr{color:var(--danger);font-size:.88rem;margin-top:12px;min-height:1.2em}
 .ad-top{position:sticky;top:0;z-index:3;background:var(--panel);border-bottom:1px solid var(--line);display:flex;align-items:center;gap:14px;padding:12px 20px;flex-wrap:wrap}
 .ad-top strong{font-family:'Familjen Grotesk',system-ui,sans-serif;font-size:1.15rem;margin-right:auto}
 .ad-tabs{display:flex;gap:4px;padding:10px 20px;overflow-x:auto;background:var(--panel);border-bottom:1px solid var(--line)}
@@ -903,7 +911,7 @@ function renderAdmin(){
   var body = { modelos: tabModelos, galeria: tabGaleria, textos: tabTextos, perguntas: tabPerguntas, publicar: tabPublicar }[A.tab]();
   var root = $('#admin');
   var scroll = root.scrollTop;
-  root.innerHTML = '<div class="ad-top"><strong>Painel do site</strong><span id="savedLbl" class="small muted"></span><a class="btn ghost sm" href="#" data-ad="close">Ver o site</a></div>' +
+  root.innerHTML = '<div class="ad-top"><strong>Painel do site</strong><span id="savedLbl" class="small muted"></span><button class="btn ghost sm" type="button" data-ad="logout">Sair</button><a class="btn ghost sm" href="#" data-ad="close">Ver o site</a></div>' +
     '<div class="ad-tabs" role="tablist">' + tabs.map(function(t){ return '<button type="button" role="tab" data-tab="' + t[0] + '" aria-selected="' + (A.tab === t[0]) + '">' + t[1] + '</button>'; }).join('') + '</div>' +
     '<div class="ad-body">' + (A.note ? '<div class="note">' + esc(A.note) + '</div>' : '') + body + '</div>';
   root.scrollTop = scroll;
@@ -918,6 +926,7 @@ admin.addEventListener('click', function(e){
   var act = b.getAttribute('data-ad'), i = parseInt(b.getAttribute('data-i'), 10), id = b.getAttribute('data-id');
   var m = byId(A.sel);
   if (act === 'close'){ e.preventDefault(); leaveAdmin(); return; }
+  if (act === 'logout'){ lsDel('wgrAdminOk'); renderGate(); return; }
   if (act === 'sel'){ A.sel = id; renderAdmin(); return; }
   if (act === 'up' || act === 'down'){ move(data.models, i, act === 'up' ? -1 : 1); commit(); renderAdmin(); return; }
   if (act === 'new-model'){
@@ -1005,6 +1014,28 @@ admin.addEventListener('change', function(e){
   }
 });
 
+var ADMIN_HASH = '5802307294fb189ec33360a370eaf46cd10569723c9bad7fa6b2ba8c234f60c2';
+function sha256hex(str){
+  var enc = new TextEncoder().encode(str);
+  return crypto.subtle.digest('SHA-256', enc).then(function(buf){
+    return Array.prototype.map.call(new Uint8Array(buf), function(b){ return b.toString(16).padStart(2, '0'); }).join('');
+  });
+}
+function adminUnlocked(){ return lsGet('wgrAdminOk') === ADMIN_HASH; }
+function renderGate(msg){
+  admin.innerHTML = '<div class="gatewrap"><div class="gatebox"><div class="mark2"></div><h2>Painel do site</h2><p>Digite a senha para administrar.</p>' +
+    '<form id="gateForm"><input id="gatePass" type="password" autocomplete="current-password" placeholder="Senha" autofocus><button class="btn primary" type="submit">Entrar</button></form>' +
+    '<p class="gateerr">' + (msg ? esc(msg) : '') + '</p></div></div>';
+  var f = $('#gateForm');
+  f.addEventListener('submit', function(e){
+    e.preventDefault();
+    var val = $('#gatePass').value;
+    sha256hex(val).then(function(h){
+      if (h === ADMIN_HASH){ lsSet('wgrAdminOk', h); renderAdmin(); }
+      else { renderGate('Senha incorreta.'); }
+    });
+  });
+}
 function leaveAdmin(){
   try{ history.pushState(null, '', location.pathname + location.search); route(); }
   catch(err){ location.hash = ''; route(); }
@@ -1014,6 +1045,7 @@ function route(){
   admin.hidden = !open;
   document.body.classList.toggle('noscroll', open);
   if (open){
+    if (!adminUnlocked()){ renderGate(); return; }
     if (!A.sel && data.models[0]) A.sel = data.models[0].id;
     renderAdmin();
   }
