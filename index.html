@@ -1,84 +1,910 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
-    <meta property="og:title" content="WGR Tech Solutions">
-    <meta property="og:description" content="Soluções em TI Proativa, Backup Blindado e Automação de Processos.">
-    <meta property="og:url" content="https://wgrsolution.com.br/">
-    <meta property="og:image" content="https://wgrsolution.com.br/wgrlogo.jpeg">
-    <meta property="og:type" content="website">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WGR Tech Solutions</title>
-   <style>
-    body, html { 
-        margin: 0; padding: 0; width: 100%; height: 100%; 
-        /* Fundo escuro profundo com uma leve textura de grade */
-        background-color: #05070a;
-        background-image: 
-            radial-gradient(circle at 20% 30%, rgba(0, 242, 254, 0.05) 0%, transparent 50%),
-            linear-gradient(rgba(0, 242, 254, 0.03) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(0, 242, 254, 0.03) 1px, transparent 1px);
-        background-size: 100% 100%, 40px 40px, 40px 40px;
-        color: #fff; font-family: 'Segoe UI', Tahoma, sans-serif; 
-        overflow-x: hidden; 
-    }
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sua Loja | PCs montados e testados</title>
+<meta name="description" content="PCs montados e testados para jogar e para trabalhar, com nota fiscal e garantia. Peça seu orçamento pelo WhatsApp.">
+<meta property="og:title" content="Sua Loja | PCs montados e testados">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0E1E36">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@500;600;700&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#EEF1F5; --white:#FFFFFF; --ink:#0F1B2D; --muted:#4F5D70; --line:#D3DAE3;
+  --blue:#1B4FD8; --blue-d:#153DAA; --amber:#F2A62B; --navy:#0E1E36; --navy2:#172C4C;
+  --danger:#B3261E; --ok:#187A4B;
+  color-scheme:light;
+}
+*,*::before,*::after{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;scroll-padding-top:120px}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:'Hanken Grotesk',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;font-size:17px;line-height:1.6}
+body.noscroll{overflow:hidden}
+h1,h2,h3{font-family:'Familjen Grotesk','Hanken Grotesk',system-ui,sans-serif;line-height:1.12;margin:0;letter-spacing:-0.015em}
+h1{font-size:clamp(2.3rem,5.6vw,3.9rem);font-weight:700}
+h2{font-size:clamp(1.7rem,3.6vw,2.4rem);font-weight:700}
+h3{font-size:1.2rem;font-weight:600}
+p{margin:0 0 .9em;max-width:66ch}
+a{color:var(--blue)}
+img{display:block;max-width:100%}
+.wrap{max-width:1160px;margin:0 auto;padding:0 clamp(16px,4vw,32px)}
+.muted{color:var(--muted)}
+.small{font-size:.88rem}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
 
-    /* Animação suave para os pontos de luz */
-    @keyframes pulse {
-        0%, 100% { opacity: 0.3; }
-        50% { opacity: 0.6; }
-    }
+/* botões */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:inherit;font-weight:600;font-size:.98rem;line-height:1.1;padding:13px 20px;min-height:46px;border-radius:10px;border:1.5px solid transparent;text-decoration:none;cursor:pointer;text-align:center}
+.btn.primary{background:var(--blue);color:#fff}
+.btn.primary:hover{background:var(--blue-d)}
+.btn.ghost{background:transparent;border-color:var(--line);color:var(--ink)}
+.btn.ghost:hover{border-color:var(--ink)}
+.btn.light{background:#fff;color:var(--navy)}
+.btn.light:hover{background:#E8EEFF}
+.btn.sm{padding:9px 15px;min-height:40px;font-size:.92rem}
+.btn.danger{background:transparent;border-color:var(--danger);color:var(--danger)}
 
-    #main-card { opacity: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; padding: 20px; transition: opacity 1s; }
-    .logo-img { width: 220px; margin-bottom: 20px; }
-    h1 { margin: 10px 0; font-size: 2rem; color: #00f2fe; text-transform: uppercase; letter-spacing: 2px; }
-    p { margin-bottom: 30px; font-size: 1.1rem; color: #cbd5e0; text-align: center; max-width: 500px; }
-    
-    .btn { display: block; width: 100%; max-width: 350px; padding: 18px; margin: 12px 0; background: rgba(30, 34, 48, 0.6); backdrop-filter: blur(5px); color: #fff; text-decoration: none; border-radius: 10px; border-left: 4px solid #00f2fe; text-align: center; font-weight: bold; transition: 0.3s; }
-    .btn:hover { background: rgba(0, 242, 254, 0.1); transform: scale(1.02); }
+/* topo */
+.top{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.96);border-bottom:1px solid var(--line);backdrop-filter:blur(6px)}
+.bar{display:flex;align-items:center;gap:8px 20px;flex-wrap:wrap;padding-top:10px;padding-bottom:10px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);font-family:'Familjen Grotesk',system-ui,sans-serif;font-weight:700;font-size:1.25rem;margin-right:auto}
+.mark{width:28px;height:28px;border-radius:7px;background:var(--navy);position:relative;flex:none}
+.mark::after{content:"";position:absolute;left:7px;top:7px;width:14px;height:14px;border-radius:3px;border:3px solid var(--amber)}
+.menu{display:flex;gap:2px;order:3;width:100%;overflow-x:auto;white-space:nowrap}
+.menu a{padding:6px 12px;border-radius:999px;color:var(--muted);text-decoration:none;font-weight:500;font-size:.95rem}
+.menu a:hover{background:var(--paper);color:var(--ink)}
+@media (min-width:980px){.menu{order:0;width:auto}}
+
+/* hero */
+.hero{padding-top:clamp(36px,7vw,80px);padding-bottom:clamp(36px,6vw,64px);display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(24px,5vw,64px);align-items:center}
+.hero .sub{font-size:1.15rem;color:var(--muted);margin:20px 0 28px;max-width:52ch}
+.cta{display:flex;flex-wrap:wrap;gap:12px}
+.hcard{background:var(--white);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.hcard .ph{aspect-ratio:4/3}
+.hbody{padding:18px 20px 20px}
+.hbody h3{margin-bottom:6px}
+.hbody p{color:var(--muted);font-size:.96rem;margin-bottom:14px}
+@media (max-width:880px){.hero{grid-template-columns:1fr}}
+
+.ph{position:relative;background:#E1E7EF;overflow:hidden}
+.ph img,.ph .phsvg{width:100%;height:100%;object-fit:cover;display:block}
+
+/* faixa de confiança */
+.trust{background:var(--white);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.trust ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr)}
+.trust li{padding:20px 22px;border-left:1px solid var(--line)}
+.trust li:first-child{border-left:0;padding-left:0}
+.trust b{display:block;font-family:'Familjen Grotesk',system-ui,sans-serif;font-size:1.05rem}
+.trust span{color:var(--muted);font-size:.92rem}
+@media (max-width:820px){.trust ul{grid-template-columns:1fr 1fr}.trust li{border-left:0;border-top:1px solid var(--line);padding-left:0}.trust li:nth-child(-n+2){border-top:0}}
+@media (max-width:480px){.trust ul{grid-template-columns:1fr}.trust li:nth-child(2){border-top:1px solid var(--line)}}
+
+section{padding:clamp(44px,7vw,84px) 0}
+.head{display:flex;flex-wrap:wrap;gap:18px 32px;align-items:end;justify-content:space-between;margin-bottom:30px}
+.head p{color:var(--muted);margin:10px 0 0}
+
+/* filtros */
+.tabs{display:flex;gap:6px;flex-wrap:wrap}
+.tabs button{font:inherit;font-weight:600;font-size:.94rem;padding:9px 16px;border-radius:999px;border:1.5px solid var(--line);background:var(--white);color:var(--ink);cursor:pointer}
+.tabs button[aria-pressed="true"]{background:var(--navy);border-color:var(--navy);color:#fff}
+
+/* modelos */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,330px),1fr));gap:22px}
+.model{background:var(--white);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
+.model .ph{aspect-ratio:4/3}
+.tag,.seal{position:absolute;font-size:.8rem;font-weight:600;padding:4px 10px;border-radius:999px}
+.tag{left:12px;bottom:12px;background:var(--navy);color:#fff}
+.tag.corporativo{background:#fff;color:var(--navy)}
+.seal{left:12px;top:12px;background:var(--amber);color:#2A1B00}
+.mbody{padding:18px 20px 20px;display:flex;flex-direction:column;gap:12px;flex:1}
+.use{color:var(--muted);font-size:.96rem;margin:0}
+.specs{margin:0}
+.specs div{display:grid;grid-template-columns:118px 1fr;gap:10px;padding:7px 0;border-top:1px solid var(--line);font-size:.9rem}
+.specs dt{color:var(--muted)}
+.specs dd{margin:0;font-weight:500}
+.mfoot{margin-top:auto}
+.price{font-family:'Familjen Grotesk',system-ui,sans-serif;font-weight:700;font-size:1.25rem}
+.price.ask{font-size:.98rem;font-weight:600;color:var(--muted);font-family:inherit}
+.mact{display:flex;gap:10px;flex-wrap:wrap}
+.mact .btn{flex:1 1 auto;white-space:nowrap;padding-left:12px;padding-right:12px}
+
+/* detalhe */
+dialog{border:0;border-radius:16px;padding:0;width:min(980px,94vw);max-height:92vh;color:var(--ink);background:var(--white);overflow:auto}
+dialog::backdrop{background:rgba(9,17,30,.62)}
+.dl{display:grid;grid-template-columns:1.1fr 1fr;gap:0}
+.gal{background:var(--paper);padding:18px}
+.gmain{aspect-ratio:4/3;border-radius:12px;overflow:hidden;background:#E1E7EF}
+.gmain img,.gmain .phsvg{width:100%;height:100%;object-fit:cover}
+.thumbs{display:flex;gap:8px;margin-top:10px;overflow-x:auto}
+.thumbs button{border:2px solid transparent;padding:0;border-radius:8px;overflow:hidden;width:72px;height:54px;flex:none;cursor:pointer;background:#fff}
+.thumbs button[aria-current="true"]{border-color:var(--blue)}
+.thumbs img{width:100%;height:100%;object-fit:cover}
+.dinfo{padding:26px 26px 28px;display:flex;flex-direction:column;gap:14px}
+.dinfo .close{align-self:flex-end;margin:-8px -8px 0 0}
+.dinfo .specs div{grid-template-columns:120px 1fr}
+@media (max-width:760px){.dl{grid-template-columns:1fr}}
+
+/* monte o seu */
+.monte{background:var(--white);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.monte .in{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(24px,5vw,64px);align-items:start}
+.form{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.form .full{grid-column:1/-1}
+.fld{display:grid;gap:5px;font-size:.9rem;font-weight:600}
+.fld input,.fld select,.fld textarea{font:inherit;font-weight:400;font-size:1rem;color:var(--ink);background:var(--white);border:1.5px solid var(--line);border-radius:8px;padding:10px 12px;width:100%}
+.fld textarea{min-height:86px;resize:vertical}
+.fld input[type=checkbox]{width:18px;height:18px;padding:0;accent-color:var(--blue)}
+.fld small{font-weight:400;color:var(--muted)}
+.checks{display:flex;gap:8px 18px;flex-wrap:wrap;font-weight:400}
+.checks label{display:flex;gap:8px;align-items:center;font-weight:400}
+.msg{color:var(--danger);font-weight:600;margin:0}
+@media (max-width:860px){.monte .in{grid-template-columns:1fr}}
+@media (max-width:520px){.form{grid-template-columns:1fr}}
+
+/* empresas */
+.biz{background:var(--navy);color:#fff}
+.biz .in{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,72px);align-items:center}
+.biz p{color:#C6D2E6}
+.biz ul{list-style:none;margin:0;padding:0;display:grid;gap:0}
+.biz li{padding:16px 0 16px 34px;border-top:1px solid #2A4066;position:relative}
+.biz li:last-child{border-bottom:1px solid #2A4066}
+.biz li::before{content:"";position:absolute;left:4px;top:23px;width:12px;height:7px;border-left:3px solid var(--amber);border-bottom:3px solid var(--amber);transform:rotate(-45deg)}
+.biz li b{display:block}
+.biz li span{color:#C6D2E6;font-size:.95rem}
+@media (max-width:820px){.biz .in{grid-template-columns:1fr}}
+
+/* galeria */
+.gal-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px}
+.gal-grid figure{margin:0}
+.gal-grid button{display:block;width:100%;padding:0;border:0;background:none;cursor:zoom-in;border-radius:12px;overflow:hidden}
+.gal-grid img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.gal-grid figcaption{font-size:.88rem;color:var(--muted);padding-top:6px}
+#lightbox{width:min(1100px,96vw);background:#000;padding:0}
+#lightbox img{width:100%;max-height:88vh;object-fit:contain}
+#lightbox .lbx{position:absolute;right:10px;top:10px}
+
+/* como funciona */
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:28px 32px;counter-reset:st}
+.steps li{counter-increment:st;border-top:2px solid var(--ink);padding-top:14px}
+.steps li::before{content:counter(st);display:inline-grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--blue);color:#fff;font-weight:700;font-size:.9rem;margin-bottom:10px}
+.steps b{display:block;font-family:'Familjen Grotesk',system-ui,sans-serif;font-size:1.12rem;margin-bottom:4px}
+.steps span{color:var(--muted);font-size:.96rem}
+@media (max-width:820px){.steps{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.steps{grid-template-columns:1fr}}
+
+/* garantia */
+.war{background:var(--white);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.war .in{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,72px);align-items:start}
+.war .big{font-family:'Familjen Grotesk',system-ui,sans-serif;font-size:clamp(1.4rem,2.6vw,1.9rem);line-height:1.25;font-weight:600;margin:14px 0 0}
+.war dl{margin:0}
+.war dl div{padding:16px 0;border-top:1px solid var(--line)}
+.war dl div:last-child{border-bottom:1px solid var(--line)}
+.war dt{font-weight:700}
+.war dd{margin:2px 0 0;color:var(--muted)}
+@media (max-width:820px){.war .in{grid-template-columns:1fr}}
+
+/* faq */
+.faq{max-width:820px}
+details.q{border-top:1px solid var(--line)}
+details.q:last-child{border-bottom:1px solid var(--line)}
+details.q summary{cursor:pointer;list-style:none;padding:18px 40px 18px 0;font-weight:600;font-size:1.05rem;position:relative}
+details.q summary::-webkit-details-marker{display:none}
+details.q summary::after{content:"+";position:absolute;right:6px;top:12px;font-size:1.6rem;font-weight:400;color:var(--blue)}
+details.q[open] summary::after{content:"\2212"}
+details.q p{color:var(--muted);padding-right:40px}
+
+/* rodapé */
+footer{background:var(--navy);color:#fff;padding:clamp(40px,6vw,68px) 0 32px}
+footer .in{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,72px)}
+footer h2{color:#fff}
+footer p{color:#C6D2E6}
+footer dl{margin:0}
+footer dl div{display:grid;grid-template-columns:110px 1fr;gap:12px;padding:12px 0;border-top:1px solid #2A4066}
+footer dt{color:#9FB3D1}
+footer dd{margin:0;overflow-wrap:anywhere}
+footer a{color:#fff}
+.legal{margin-top:36px;padding-top:18px;border-top:1px solid #2A4066;color:#9FB3D1;font-size:.86rem}
+@media (max-width:820px){footer .in{grid-template-columns:1fr}}
+
+.fab{position:fixed;right:14px;bottom:14px;z-index:15;display:none;box-shadow:0 6px 18px rgba(14,30,54,.35)}
+@media (max-width:700px){.fab{display:inline-flex}}
+
+/* admin */
+#admin{position:fixed;inset:0;z-index:100;background:var(--paper);overflow:auto;font-size:16px}
+.ad-top{position:sticky;top:0;z-index:3;background:var(--white);border-bottom:1px solid var(--line);display:flex;align-items:center;gap:14px;padding:12px 20px;flex-wrap:wrap}
+.ad-top strong{font-family:'Familjen Grotesk',system-ui,sans-serif;font-size:1.15rem;margin-right:auto}
+.ad-tabs{display:flex;gap:4px;padding:10px 20px;overflow-x:auto;background:var(--white);border-bottom:1px solid var(--line)}
+.ad-tabs button{font:inherit;font-weight:600;padding:8px 14px;border:0;border-radius:8px;background:transparent;color:var(--muted);cursor:pointer;white-space:nowrap}
+.ad-tabs button[aria-selected="true"]{background:var(--navy);color:#fff}
+.ad-body{max-width:1120px;margin:0 auto;padding:22px 20px 80px}
+.ad-body h2{font-size:1.5rem;margin-bottom:6px}
+.ad-body p.lead{color:var(--muted);margin-bottom:20px}
+.ad-split{display:grid;grid-template-columns:340px minmax(0,1fr);gap:24px;align-items:start}
+.ad-split>*{min-width:0}
+@media (max-width:900px){.ad-split{grid-template-columns:minmax(0,1fr)}}
+.box{background:var(--white);border:1px solid var(--line);border-radius:12px;padding:18px}
+.box+.box{margin-top:16px}
+.mlist{list-style:none;margin:0 0 12px;padding:0;display:grid;gap:6px}
+.mlist li{display:flex;gap:6px;align-items:center;min-width:0}
+.mlist .pick{flex:1 1 0;overflow:hidden;display:flex;gap:10px;align-items:center;text-align:left;font:inherit;background:var(--paper);border:1.5px solid transparent;border-radius:10px;padding:6px 10px 6px 6px;cursor:pointer;min-width:0}
+.mlist li.sel .pick{border-color:var(--blue);background:#EAF0FF}
+.mlist .pick img,.mlist .pick .nophoto{width:46px;height:36px;object-fit:cover;border-radius:6px;background:#E1E7EF;flex:none}
+.mlist .pick span{min-width:0;flex:1;line-height:1.3}
+.mlist .pick small{display:block;color:var(--muted)}
+.mini{flex:none;font:inherit;border:1px solid var(--line);background:#fff;border-radius:6px;width:30px;height:30px;cursor:pointer;line-height:1}
+.ed{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.ed .full{grid-column:1/-1}
+@media (max-width:640px){.ed{grid-template-columns:1fr}}
+.rowsp{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr) auto;gap:8px;margin-bottom:8px}
+.rowsp input{min-width:0;width:100%;font:inherit;font-size:.95rem;padding:8px 10px;border:1.5px solid var(--line);border-radius:8px}
+.pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
+.pth{border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#fff}
+.pth img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.pth div{display:flex;gap:6px;padding:8px;flex-wrap:wrap}
+.pth input{width:100%;font:inherit;font-size:.86rem;padding:6px 8px;border:1px solid var(--line);border-radius:6px}
+.note{background:#FFF6E0;border:1px solid #F0D48A;border-radius:10px;padding:12px 14px;margin-bottom:16px}
+.note.ok{background:#E8F6EE;border-color:#A9D8BE}
+.note.warn{background:#FDEBEA;border-color:#EFB1AD}
+.upl{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:8px 0 14px}
+ol.pub{padding-left:1.2em;margin:0 0 16px}
+ol.pub li{margin-bottom:8px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
 </head>
 <body>
 
-    <div id="boot-screen">
-        <div id="console-container" style="font-family: monospace; color: #00f2fe; max-width: 600px; margin: 0 auto;"></div>
+<header class="top" id="topo">
+  <div class="wrap bar">
+    <a class="brand" href="#"><span class="mark" aria-hidden="true"></span><span data-s="nome">Sua Loja</span></a>
+    <nav class="menu" aria-label="Principal">
+      <a href="#modelos">Modelos</a>
+      <a href="#monte">Monte o seu</a>
+      <a href="#empresas">Empresas</a>
+      <a href="#como">Como funciona</a>
+      <a href="#garantia">Garantia</a>
+      <a href="#perguntas">Perguntas</a>
+      <a href="#contato">Contato</a>
+    </nav>
+    <a class="btn primary sm" data-wa="Olá! Vim pelo site da {nome} e quero um orçamento de PC." href="#contato">Falar no WhatsApp</a>
+  </div>
+</header>
+
+<main>
+  <div class="wrap hero">
+    <div>
+      <h1 data-s="heroTitulo">PCs montados e testados para jogar e para trabalhar</h1>
+      <p class="sub" data-s="heroTexto">Cada computador é montado na bancada, testado antes da entrega e sai com nota fiscal e garantia. Para o seu jogo, para o seu trabalho ou para toda a sua empresa.</p>
+      <div class="cta">
+        <a class="btn primary" data-wa="Olá! Vim pelo site da {nome} e quero um orçamento de PC." href="#contato">Pedir orçamento no WhatsApp</a>
+        <a class="btn ghost" href="#modelos">Ver os modelos</a>
+      </div>
     </div>
+    <div class="hcard" id="heroCard"></div>
+  </div>
 
-    <div id="main-card">
-        <img src="logowgr.png" class="logo-img" alt="Logo WGR">
-        <p>Soluções em TI Proativa, Backup Blindado e Automação de Processos.</p>
-        
-        <a href="https://wa.me/555491638651" class="btn" style="display: flex; align-items: center; justify-content: center; gap: 10px;">
-    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="#25D366">
-        <path d="M12.031 0C5.389 0 0 5.392 0 12.034c0 2.124.553 4.195 1.604 6.012L.261 24l6.095-1.597C8.125 23.334 10.052 23.9 12.029 23.9h.005c6.639 0 12.033-5.394 12.033-12.035S18.675 0 12.031 0zm0 21.905c-1.802 0-3.565-.483-5.111-1.398l-.366-.217-3.799.996.992-3.725-.238-.379c-1.005-1.598-1.536-3.447-1.536-5.348 0-5.546 4.515-10.061 10.063-10.061 2.688 0 5.215 1.047 7.114 2.948 1.899 1.901 2.944 4.428 2.944 7.115 0 5.548-4.516 10.065-10.063 10.065v-.004zm5.526-7.541c-.303-.152-1.792-.885-2.071-.987-.279-.101-.482-.152-.685.152-.203.303-.781.987-.958 1.189-.178.203-.356.228-.659.076-.303-.152-1.28-.472-2.438-1.509-.903-.807-1.512-1.804-1.69-2.108-.178-.303-.019-.467.132-.619.136-.137.303-.355.455-.533.152-.177.203-.303.303-.507.101-.203.051-.379-.025-.531-.076-.152-.685-1.652-.938-2.261-.247-.595-.497-.514-.685-.523-.178-.009-.381-.009-.584-.009-.203 0-.533.076-.812.379-.279.303-1.066 1.041-1.066 2.538 0 1.497 1.092 2.945 1.244 3.148.152.203 2.146 3.275 5.197 4.593.726.313 1.293.5 1.737.64.729.231 1.393.198 1.916.12.584-.087 1.792-.732 2.046-1.44.254-.708.254-1.315.178-1.44-.076-.127-.279-.203-.582-.355z"/>
-    </svg>
-    Fale Conosco
-</a>
-        <a href="mailto:contato@wgrsolution.com.br" class="btn">📧 contato@wgrsolution.com.br</a>
-        <a href="planos.html" class="btn" style="border-left-color: #f1c40f;">📊 Ver Planos e Valores</a>
+  <div class="trust">
+    <div class="wrap">
+      <ul>
+        <li><b>Nota fiscal em toda venda</b><span>Com a lista das peças e números de série</span></li>
+        <li><b>Garantia por escrito</b><span>Da loja e do fabricante de cada peça</span></li>
+        <li><b>Teste de bancada</b><span>Estabilidade e temperatura antes de sair</span></li>
+        <li><b>Prazo combinado</b><span>Definido no orçamento, sem surpresa</span></li>
+      </ul>
     </div>
+  </div>
 
-    <script>
-        let i = 0;
-        const container = document.getElementById('console-container');
-        const lines = ["Inicializando WGR_System...", "Carregando módulos de segurança...", "Sincronizando infraestrutura...", "Acesso liberado."];
+  <section id="modelos">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <h2>Modelos prontos para pedir</h2>
+          <p>Toque em um modelo para ver a configuração completa. Todos podem ser ajustados ao seu uso e orçamento.</p>
+        </div>
+        <div class="tabs" role="group" aria-label="Filtrar modelos">
+          <button type="button" data-filter="todos" aria-pressed="true">Todos</button>
+          <button type="button" data-filter="gamer" aria-pressed="false">Gamer</button>
+          <button type="button" data-filter="corporativo" aria-pressed="false">Corporativo</button>
+        </div>
+      </div>
+      <div class="grid" id="modelGrid"></div>
+      <p class="small muted" style="margin-top:18px">Memória RAM e SSD tiveram alta forte e instável desde o fim de 2025. Por isso os valores mudam e o orçamento tem validade curta.</p>
+    </div>
+  </section>
 
-        function run() {
-            if (i < lines.length) {
-                const p = document.createElement('p');
-                p.textContent = "> " + lines[i];
-                container.appendChild(p);
-                i++;
-                setTimeout(run, 800);
-            } else {
-                document.getElementById('boot-screen').style.opacity = "0";
-                setTimeout(() => {
-                    document.getElementById('boot-screen').style.display = "none";
-                    document.getElementById('main-card').style.opacity = "1";
-                }, 1000);
-            }
-        }
-        run();
-    </script>
+  <section class="monte" id="monte">
+    <div class="wrap in">
+      <div>
+        <h2>Monte o seu</h2>
+        <p class="muted" style="margin-top:12px">Conte para que você vai usar o PC e quanto pretende investir. Você recebe uma configuração fechada, com preço e prazo, direto no WhatsApp.</p>
+      </div>
+      <form class="form" id="monteForm" novalidate>
+        <label class="fld">Para que vai usar
+          <select name="uso">
+            <option>Jogos</option>
+            <option>Trabalho e escritório</option>
+            <option>Edição de vídeo, imagem ou projetos</option>
+            <option>Jogos e trabalho</option>
+            <option>Para a minha empresa</option>
+          </select>
+        </label>
+        <label class="fld">Quanto pretende investir
+          <input name="verba" placeholder="Ex.: até R$ 5.000">
+        </label>
+        <label class="fld">Seu nome
+          <input name="nome" autocomplete="given-name">
+        </label>
+        <label class="fld">Quantidade de PCs
+          <input name="qtd" type="number" min="1" value="1" inputmode="numeric">
+        </label>
+        <div class="fld full">Quer incluir
+          <div class="checks">
+            <label><input type="checkbox" name="extra" value="monitor"> Monitor</label>
+            <label><input type="checkbox" name="extra" value="teclado e mouse"> Teclado e mouse</label>
+            <label><input type="checkbox" name="extra" value="headset"> Headset</label>
+            <label><input type="checkbox" name="extra" value="nobreak"> Nobreak</label>
+          </div>
+        </div>
+        <label class="fld full">Algo mais que devemos saber
+          <textarea name="obs" placeholder="Jogos ou programas que você usa, cor do gabinete, prazo desejado"></textarea>
+        </label>
+        <div class="full">
+          <button class="btn primary" type="submit">Enviar pelo WhatsApp</button>
+          <p class="msg" id="monteMsg" role="status" style="margin-top:10px"></p>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <section class="biz" id="empresas">
+    <div class="wrap in">
+      <div>
+        <h2>PCs para a sua empresa</h2>
+        <p style="margin-top:14px">Equipe o escritório, o caixa ou o projeto com máquinas iguais, configuradas e testadas, com nota fiscal para CNPJ e proposta por escrito.</p>
+        <a class="btn light" data-wa="Olá! Sou de uma empresa e quero uma proposta de PCs. Quantidade aproximada: " href="#contato" style="margin-top:8px">Pedir proposta para empresa</a>
+      </div>
+      <ul>
+        <li><b>Nota fiscal para CNPJ</b><span>Cada máquina com número de série registrado.</span></li>
+        <li><b>Máquinas iguais em lote</b><span>Mesma configuração para toda a equipe, o que facilita suporte e reposição.</span></li>
+        <li><b>Configuradas para o uso</b><span>Escritório, contabilidade, projetos, caixa e balcão.</span></li>
+        <li><b>Suporte depois da entrega</b><span>Pelo WhatsApp e, se você quiser, com contrato de suporte.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="galeria" hidden>
+    <div class="wrap">
+      <div class="head"><div><h2>Montagens que já saíram da bancada</h2><p>Fotos reais de PCs montados por nós.</p></div></div>
+      <div class="gal-grid" id="galGrid"></div>
+    </div>
+  </section>
+
+  <section id="como">
+    <div class="wrap">
+      <div class="head"><div><h2>Como funciona</h2><p>Do primeiro contato à entrega, tudo acompanhado pelo WhatsApp.</p></div></div>
+      <ol class="steps">
+        <li><b>Você conta o que precisa</b><span>Uso, orçamento e prazo. Pode escolher um modelo pronto ou pedir uma configuração sob medida.</span></li>
+        <li><b>Recebe o orçamento</b><span>Configuração fechada, preço e prazo por escrito. O orçamento vale por 48 horas por causa da oscilação das peças.</span></li>
+        <li><b>Confirma o pedido</b><span>Combinamos a forma de pagamento e o sinal, quando há peças sob encomenda.</span></li>
+        <li><b>Montamos e testamos</b><span>Montagem com cabos organizados e teste de estabilidade e temperatura na bancada.</span></li>
+        <li><b>Entregamos com nota e garantia</b><span>Nota fiscal, lista de peças e garantia por escrito.</span></li>
+        <li><b>Acompanhamos depois</b><span>Dúvidas e suporte pelo mesmo WhatsApp em que você fez o pedido.</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="war" id="garantia">
+    <div class="wrap in">
+      <div>
+        <h2>Garantia e transparência</h2>
+        <p class="big" data-s="garantia">Garantia legal de 90 dias em todo PC, além da garantia do fabricante de cada peça.</p>
+      </div>
+      <dl>
+        <div><dt>Nota fiscal</dt><dd>Emitida em toda venda, com a lista das peças.</dd></div>
+        <div><dt>Teste de bancada</dt><dd>Todo PC passa por teste de estabilidade e temperatura antes da entrega.</dd></div>
+        <div><dt>Prazo</dt><dd data-s="prazo">3 a 7 dias úteis após a confirmação da configuração e a chegada das peças.</dd></div>
+        <div><dt>Orçamento</dt><dd>Válido por 48 horas, porque o preço de memória e SSD muda com frequência.</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section id="perguntas">
+    <div class="wrap">
+      <div class="head"><div><h2>Perguntas frequentes</h2></div></div>
+      <div class="faq" id="faqList"></div>
+    </div>
+  </section>
+</main>
+
+<footer id="contato">
+  <div class="wrap">
+    <div class="in">
+      <div>
+        <h2>Vamos montar o seu?</h2>
+        <p style="margin-top:12px">Fale com a gente e receba uma configuração fechada, com preço e prazo.</p>
+        <a class="btn light" data-wa="Olá! Vim pelo site da {nome} e quero um orçamento de PC." href="#contato">Chamar no WhatsApp</a>
+      </div>
+      <dl id="contactList"></dl>
+    </div>
+    <div class="legal" id="legal"></div>
+  </div>
+</footer>
+
+<a class="btn primary fab" data-wa="Olá! Vim pelo site da {nome} e quero um orçamento de PC." href="#contato">WhatsApp</a>
+
+<dialog id="detail" aria-label="Detalhes do modelo"></dialog>
+<dialog id="lightbox" aria-label="Foto ampliada"></dialog>
+
+<div id="admin" hidden aria-label="Painel do site"></div>
+
+<noscript><p style="padding:20px">Este site precisa de JavaScript para mostrar o catálogo.</p></noscript>
+
+<script id="catalog-data" type="application/json">{"updated":1,"settings":{"nome":"Sua Loja","heroTitulo":"PCs montados e testados para jogar e para trabalhar","heroTexto":"Cada computador é montado na bancada, testado antes da entrega e sai com nota fiscal e garantia. Para o seu jogo, para o seu trabalho ou para toda a sua empresa.","whatsapp":"","instagram":"","olx":"","google":"","email":"","endereco":"","horario":"","cnpj":"","prazo":"3 a 7 dias úteis após a confirmação da configuração e a chegada das peças.","garantia":"Garantia legal de 90 dias em todo PC, além da garantia do fabricante de cada peça."},"models":[{"id":"gamer-entrada","nome":"Gamer Entrada","linha":"gamer","selo":"Para começar","resumo":"Para jogar Valorant, CS2, LoL e Fortnite em Full HD sem pagar pelo que você não vai usar.","preco":"","visivel":true,"destaque":true,"fotos":[],"specs":[{"k":"Processador","v":"6 núcleos"},{"k":"Placa de vídeo","v":"Dedicada de entrada ou vídeo integrado forte"},{"k":"Memória","v":"16 GB"},{"k":"Armazenamento","v":"SSD de 500 GB a 1 TB"},{"k":"Fonte","v":"Certificada, dimensionada para a placa"},{"k":"Teste","v":"Estabilidade e temperatura em bancada"}]},{"id":"gamer-intermediario","nome":"Gamer Intermediário","linha":"gamer","selo":"Equilíbrio","resumo":"Para lançamentos em Full HD com qualidade alta ou em 1440p, com folga para o futuro.","preco":"","visivel":true,"destaque":false,"fotos":[],"specs":[{"k":"Processador","v":"6 a 8 núcleos"},{"k":"Placa de vídeo","v":"Dedicada de faixa média"},{"k":"Memória","v":"16 a 32 GB"},{"k":"Armazenamento","v":"SSD NVMe de 1 TB"},{"k":"Fonte","v":"Certificada, com folga de potência"},{"k":"Refrigeração","v":"Cooler dimensionado e cabos organizados"}]},{"id":"gamer-alto","nome":"Gamer Alto Desempenho","linha":"gamer","selo":"Sob encomenda","resumo":"Para streaming, criação de conteúdo e jogos pesados, montado conforme o seu projeto.","preco":"","visivel":true,"destaque":false,"fotos":[],"specs":[{"k":"Processador","v":"8 núcleos ou mais"},{"k":"Placa de vídeo","v":"Dedicada de topo de faixa"},{"k":"Memória","v":"32 GB ou mais"},{"k":"Armazenamento","v":"SSD NVMe de 1 TB ou mais"},{"k":"Fonte","v":"Alta potência, certificada"},{"k":"Refrigeração","v":"Reforçada, com fluxo de ar planejado"}]},{"id":"corp-escritorio","nome":"Corporativo Escritório","linha":"corporativo","selo":"Para equipes","resumo":"Para ERP, planilhas, navegador e atendimento, com desempenho estável o dia todo.","preco":"","visivel":true,"destaque":false,"fotos":[],"specs":[{"k":"Processador","v":"Entrada, com vídeo integrado"},{"k":"Memória","v":"8 a 16 GB"},{"k":"Armazenamento","v":"SSD"},{"k":"Entrega","v":"Configurado, testado e com nota fiscal"},{"k":"Lotes","v":"Proposta especial para várias máquinas"}]},{"id":"corp-profissional","nome":"Corporativo Profissional","linha":"corporativo","selo":"Mais potência","resumo":"Para contabilidade, projetos, edição leve e CAD leve, com memória de sobra para vários programas abertos.","preco":"","visivel":true,"destaque":false,"fotos":[],"specs":[{"k":"Processador","v":"Mais núcleos, para multitarefa"},{"k":"Placa de vídeo","v":"Básica, quando o software exige"},{"k":"Memória","v":"16 a 32 GB"},{"k":"Armazenamento","v":"SSD NVMe"},{"k":"Suporte","v":"Contrato de suporte opcional"}]},{"id":"corp-pdv","nome":"PDV e Compacto","linha":"corporativo","selo":"Balcão e caixa","resumo":"Para caixa, balcão e recepção: pequeno, econômico e feito para ligar todo dia sem dor de cabeça.","preco":"","visivel":true,"destaque":false,"fotos":[],"specs":[{"k":"Gabinete","v":"Compacto"},{"k":"Consumo","v":"Baixo"},{"k":"Memória","v":"8 GB ou mais"},{"k":"Armazenamento","v":"SSD"},{"k":"Foco","v":"Estabilidade e nota fiscal"}]}],"galeria":[],"faq":[{"q":"Vocês emitem nota fiscal?","a":"Sim. Toda venda sai com nota fiscal e com a lista das peças e números de série."},{"q":"Quanto tempo leva para ficar pronto?","a":"O prazo é combinado no orçamento. Como referência, de 3 a 7 dias úteis depois de fechar a configuração e as peças chegarem."},{"q":"Posso escolher as peças?","a":"Pode. Use o formulário Monte o seu ou chame no WhatsApp. Montamos a configuração pelo seu uso e pelo seu orçamento."},{"q":"Por que o preço muda de um dia para o outro?","a":"Memória RAM e SSD tiveram alta forte e instável desde o fim de 2025. Por isso o orçamento vale por 48 horas e alguns pedidos pedem sinal antes da compra das peças."},{"q":"Qual é a garantia?","a":"Garantia legal de 90 dias em todo PC, além da garantia do fabricante de cada peça. Os termos ficam por escrito na entrega."},{"q":"Vocês atendem empresas?","a":"Sim. Montamos PCs em lote, com nota fiscal para CNPJ e proposta por escrito. Use o botão Pedir proposta para empresa."},{"q":"Como funciona o pagamento?","a":"As formas de pagamento e o sinal, quando houver peças sob encomenda, são combinados no orçamento."},{"q":"Vocês enviam para outras cidades?","a":"Chame no WhatsApp para combinar. O frete e a embalagem entram no orçamento."}]}</script>
+
+<script>
+(function(){
+'use strict';
+/* Cópia do arquivo antes de qualquer renderização. É a base do botão "Baixar site atualizado". */
+var SOURCE = '<!doctype html>\n' + document.documentElement.outerHTML;
+
+var $ = function(s, r){ return (r || document).querySelector(s); };
+var $$ = function(s, r){ return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+function esc(v){ return String(v == null ? '' : v).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
+
+var data = JSON.parse($('#catalog-data').textContent);
+var filter = 'todos';
+var A = { tab:'modelos', sel:null, note:'' };
+
+/* ---------- armazenamento do rascunho (IndexedDB) ---------- */
+var DBN = 'loja-pc-site', STN = 'kv';
+function idb(){
+  return new Promise(function(res, rej){
+    try{
+      var r = indexedDB.open(DBN, 1);
+      r.onupgradeneeded = function(){ r.result.createObjectStore(STN); };
+      r.onsuccess = function(){ res(r.result); };
+      r.onerror = function(){ rej(r.error); };
+    }catch(e){ rej(e); }
+  });
+}
+function idbGet(k){ return idb().then(function(db){ return new Promise(function(res, rej){ var t = db.transaction(STN).objectStore(STN).get(k); t.onsuccess = function(){ res(t.result); }; t.onerror = function(){ rej(t.error); }; }); }); }
+function idbSet(k, v){ return idb().then(function(db){ return new Promise(function(res, rej){ var t = db.transaction(STN, 'readwrite'); t.objectStore(STN).put(v, k); t.oncomplete = function(){ res(); }; t.onerror = function(){ rej(t.error); }; }); }); }
+function idbDel(k){ return idb().then(function(db){ return new Promise(function(res, rej){ var t = db.transaction(STN, 'readwrite'); t.objectStore(STN).delete(k); t.oncomplete = function(){ res(); }; t.onerror = function(){ rej(t.error); }; }); }); }
+
+/* ---------- utilidades ---------- */
+function S(){ return data.settings; }
+function byId(id){ return data.models.filter(function(m){ return m.id === id; })[0]; }
+function uid(){ return 'm' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6); }
+function safeSrc(u){
+  u = String(u || '').trim();
+  if (/^(data:image\/|https?:\/\/|\/|\.{1,2}\/)/.test(u)) return u;
+  if (/^[\w.\-\/ ]+\.(jpe?g|png|webp|gif|avif)$/i.test(u)) return u;
+  return '';
+}
+function photos(m){ return (m.fotos || []).map(safeSrc).filter(Boolean); }
+function waNum(){ var n = String(S().whatsapp || '').replace(/\D/g, ''); if (!n) return ''; if (n.length <= 11) n = '55' + n; return n; }
+function wa(msg){ var n = waNum(); return n ? 'https://wa.me/' + n + '?text=' + encodeURIComponent(msg) : '#contato'; }
+function waAttrs(msg){ var h = wa(msg); return ' href="' + esc(h) + '"' + (waNum() ? ' target="_blank" rel="noopener"' : ''); }
+function fmtPhone(n){
+  n = String(n || '').replace(/\D/g, ''); if (n.indexOf('55') === 0 && n.length > 11) n = n.slice(2);
+  if (n.length === 11) return '(' + n.slice(0,2) + ') ' + n.slice(2,7) + '-' + n.slice(7);
+  if (n.length === 10) return '(' + n.slice(0,2) + ') ' + n.slice(2,6) + '-' + n.slice(6);
+  return n;
+}
+function visibleModels(){ return data.models.filter(function(m){ return m.visivel !== false; }); }
+function lineName(l){ return l === 'gamer' ? 'Gamer' : 'Corporativo'; }
+
+function phSVG(line){
+  var glow = line === 'gamer' ? '#F2A62B' : '#8FB0FF';
+  var inner = line === 'gamer'
+    ? '<rect x="22" y="26" width="6" height="128" rx="3" fill="' + glow + '"/><circle cx="106" cy="46" r="17" fill="none" stroke="' + glow + '" stroke-width="4"/><circle cx="106" cy="46" r="4" fill="' + glow + '"/><circle cx="106" cy="88" r="17" fill="none" stroke="' + glow + '" stroke-width="4"/><circle cx="106" cy="88" r="4" fill="' + glow + '"/><rect x="40" y="128" width="96" height="18" rx="4" fill="' + glow + '" opacity=".9"/><rect x="40" y="152" width="96" height="5" rx="2" fill="' + glow + '" opacity=".4"/>'
+    : '<rect x="30" y="40" width="100" height="10" rx="3" fill="' + glow + '" opacity=".9"/><rect x="30" y="60" width="70" height="6" rx="3" fill="' + glow + '" opacity=".5"/><rect x="30" y="76" width="84" height="6" rx="3" fill="' + glow + '" opacity=".5"/><circle cx="80" cy="140" r="16" fill="none" stroke="' + glow + '" stroke-width="4"/>';
+  return '<svg class="phsvg" viewBox="0 0 400 300" role="img" aria-label="Foto em breve"><rect width="400" height="300" fill="#E1E7EF"/><g transform="translate(120 30)"><rect width="160" height="226" rx="14" fill="#1B2A44"/><rect x="10" y="12" width="140" height="170" rx="8" fill="#2B3F63"/>' + inner + '<rect x="10" y="194" width="140" height="8" rx="4" fill="#2B3F63"/><rect x="24" y="226" width="22" height="10" rx="3" fill="#1B2A44"/><rect x="114" y="226" width="22" height="10" rx="3" fill="#1B2A44"/></g><text x="200" y="288" text-anchor="middle" font-size="13" fill="#4F5D70" font-family="Hanken Grotesk,system-ui,sans-serif">Foto em breve</text></svg>';
+}
+function photoHTML(m, idx){
+  var p = photos(m); var src = p[idx || 0];
+  return src ? '<img src="' + esc(src) + '" alt="' + esc(m.nome) + '" loading="lazy" decoding="async">' : phSVG(m.linha);
+}
+
+/* ---------- renderização pública ---------- */
+function bindStatic(){
+  var s = S();
+  $$('[data-s]').forEach(function(el){ var v = s[el.getAttribute('data-s')]; if (v != null && v !== '') el.textContent = v; });
+  $$('[data-wa]').forEach(function(el){
+    el.setAttribute('href', wa(el.getAttribute('data-wa').replace('{nome}', s.nome)));
+    if (waNum()){ el.setAttribute('target', '_blank'); el.setAttribute('rel', 'noopener'); }
+    else { el.removeAttribute('target'); el.removeAttribute('rel'); }
+  });
+  document.title = s.nome + ' | PCs montados e testados';
+}
+function renderHero(){
+  var ms = visibleModels();
+  var m = ms.filter(function(x){ return x.destaque; })[0] || ms[0];
+  var box = $('#heroCard');
+  if (!m){ box.hidden = true; return; }
+  box.hidden = false;
+  box.innerHTML = '<div class="ph">' + photoHTML(m) + '</div><div class="hbody"><h3>' + esc(m.nome) + '</h3><p>' + esc(m.resumo) + '</p><button class="btn ghost sm" type="button" data-open="' + esc(m.id) + '">Ver este modelo</button></div>';
+}
+function specRows(m, n){
+  return (m.specs || []).filter(function(s){ return s.k || s.v; }).slice(0, n || 99).map(function(s){ return '<div><dt>' + esc(s.k) + '</dt><dd>' + esc(s.v) + '</dd></div>'; }).join('');
+}
+function priceHTML(m){ return m.preco ? '<span class="price">' + esc(m.preco) + '</span>' : '<span class="price ask">Valor do dia pelo WhatsApp</span>'; }
+function modelMsg(m){ return 'Olá! Tenho interesse no modelo ' + m.nome + ' (site da ' + S().nome + '). Pode me passar o orçamento?'; }
+function cardHTML(m){
+  return '<article class="model"><div class="ph">' + photoHTML(m) +
+    '<span class="tag ' + esc(m.linha) + '">' + lineName(m.linha) + '</span>' + (m.selo ? '<span class="seal">' + esc(m.selo) + '</span>' : '') + '</div>' +
+    '<div class="mbody"><h3>' + esc(m.nome) + '</h3><p class="use">' + esc(m.resumo) + '</p><dl class="specs">' + specRows(m, 4) + '</dl>' +
+    '<div class="mfoot">' + priceHTML(m) + '</div>' +
+    '<div class="mact"><button class="btn ghost" type="button" data-open="' + esc(m.id) + '">Ver detalhes</button><a class="btn primary"' + waAttrs(modelMsg(m)) + '>Pedir orçamento</a></div></div></article>';
+}
+function renderModels(){
+  var ms = visibleModels().filter(function(m){ return filter === 'todos' || m.linha === filter; });
+  $('#modelGrid').innerHTML = ms.length ? ms.map(cardHTML).join('') : '<p class="muted">Nenhum modelo nesta linha por enquanto.</p>';
+  $$('[data-filter]').forEach(function(b){ b.setAttribute('aria-pressed', b.getAttribute('data-filter') === filter ? 'true' : 'false'); });
+}
+function renderGallery(){
+  var g = (data.galeria || []).filter(function(x){ return safeSrc(x.src); });
+  $('#galeria').hidden = !g.length;
+  $('#galGrid').innerHTML = g.map(function(x, i){
+    return '<figure><button type="button" data-zoom="' + i + '" aria-label="Ampliar foto"><img src="' + esc(safeSrc(x.src)) + '" alt="' + esc(x.legenda || 'PC montado') + '" loading="lazy" decoding="async"></button>' + (x.legenda ? '<figcaption>' + esc(x.legenda) + '</figcaption>' : '') + '</figure>';
+  }).join('');
+}
+function renderFaq(){
+  $('#faqList').innerHTML = (data.faq || []).filter(function(f){ return f.q; }).map(function(f){
+    return '<details class="q"><summary>' + esc(f.q) + '</summary><p>' + esc(f.a) + '</p></details>';
+  }).join('');
+}
+function renderContact(){
+  var s = S(), rows = [];
+  function row(k, v){ rows.push('<div><dt>' + k + '</dt><dd>' + v + '</dd></div>'); }
+  if (waNum()) row('WhatsApp', '<a' + waAttrs('Olá! Vim pelo site da ' + s.nome + '.') + '>' + esc(fmtPhone(s.whatsapp)) + '</a>');
+  if (s.instagram){
+    var h = String(s.instagram).replace(/^https?:\/\/(www\.)?instagram\.com\//i, '').replace(/^@/, '').replace(/[\/?].*$/, '');
+    row('Instagram', '<a href="https://instagram.com/' + esc(h) + '" target="_blank" rel="noopener">@' + esc(h) + '</a>');
+  }
+  if (/^https?:\/\//i.test(s.olx || '')) row('OLX', '<a href="' + esc(s.olx) + '" target="_blank" rel="noopener">Ver nossos anúncios</a>');
+  if (/^https?:\/\//i.test(s.google || '')) row('Avaliações', '<a href="' + esc(s.google) + '" target="_blank" rel="noopener">Ver no Google</a>');
+  if (s.email) row('E-mail', '<a href="mailto:' + esc(s.email) + '">' + esc(s.email) + '</a>');
+  if (s.endereco) row('Endereço', esc(s.endereco));
+  if (s.horario) row('Horário', esc(s.horario));
+  $('#contactList').innerHTML = rows.join('') || '<div><dt>Contato</dt><dd>Em breve.</dd></div>';
+  $('#legal').textContent = '\u00A9 ' + new Date().getFullYear() + ' ' + s.nome + (s.cnpj ? ' \u2022 CNPJ ' + s.cnpj : '');
+}
+function renderPublic(){ bindStatic(); renderHero(); renderModels(); renderGallery(); renderFaq(); renderContact(); }
+
+/* ---------- detalhe do modelo ---------- */
+var dlg = $('#detail'), lbx = $('#lightbox');
+function openDetail(id, idx){
+  var m = byId(id); if (!m) return;
+  var p = photos(m); idx = Math.min(idx || 0, Math.max(p.length - 1, 0));
+  var main = p.length ? '<img src="' + esc(p[idx]) + '" alt="' + esc(m.nome) + '">' : phSVG(m.linha);
+  var thumbs = p.length > 1 ? '<div class="thumbs">' + p.map(function(src, i){ return '<button type="button" data-thumb="' + i + '" data-id="' + esc(m.id) + '" aria-label="Foto ' + (i + 1) + '"' + (i === idx ? ' aria-current="true"' : '') + '><img src="' + esc(src) + '" alt=""></button>'; }).join('') + '</div>' : '';
+  dlg.innerHTML = '<div class="dl"><div class="gal"><div class="gmain">' + main + '</div>' + thumbs + '</div>' +
+    '<div class="dinfo"><button class="btn ghost sm close" type="button" data-close="detail">Fechar</button>' +
+    '<div><h3 style="font-size:1.6rem">' + esc(m.nome) + '</h3><p class="muted" style="margin-top:8px">' + esc(m.resumo) + '</p></div>' +
+    '<dl class="specs">' + specRows(m) + '</dl>' + priceHTML(m) +
+    '<a class="btn primary"' + waAttrs(modelMsg(m)) + '>Pedir orçamento deste modelo</a>' +
+    '<p class="small muted" style="margin:0">Valores e peças podem mudar. O orçamento vale por 48 horas.</p></div></div>';
+  if (!dlg.open) dlg.showModal();
+}
+dlg.addEventListener('click', function(e){ if (e.target === dlg) dlg.close(); });
+lbx.addEventListener('click', function(e){ if (e.target === lbx || e.target.closest('[data-close="lbx"]')) lbx.close(); });
+
+document.addEventListener('click', function(e){
+  var t;
+  if ((t = e.target.closest('[data-open]'))){ openDetail(t.getAttribute('data-open'), 0); return; }
+  if ((t = e.target.closest('[data-thumb]'))){ openDetail(t.getAttribute('data-id'), parseInt(t.getAttribute('data-thumb'), 10)); return; }
+  if ((t = e.target.closest('[data-close="detail"]'))){ dlg.close(); return; }
+  if ((t = e.target.closest('[data-filter]'))){ filter = t.getAttribute('data-filter'); renderModels(); return; }
+  if ((t = e.target.closest('[data-zoom]'))){
+    var g = (data.galeria || []).filter(function(x){ return safeSrc(x.src); })[parseInt(t.getAttribute('data-zoom'), 10)];
+    if (g){ lbx.innerHTML = '<img src="' + esc(safeSrc(g.src)) + '" alt="' + esc(g.legenda || 'PC montado') + '"><button class="btn light sm lbx" type="button" data-close="lbx">Fechar</button>'; lbx.showModal(); }
+  }
+});
+
+/* ---------- formulário "Monte o seu" ---------- */
+$('#monteForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  var f = e.target;
+  var extras = $$('input[name="extra"]:checked', f).map(function(x){ return x.value; });
+  var qtd = parseInt(f.qtd.value, 10) || 1;
+  var msg = 'Olá! Quero um orçamento de PC pelo site da ' + S().nome + '.\n' +
+    (f.nome.value.trim() ? 'Nome: ' + f.nome.value.trim() + '\n' : '') +
+    'Uso: ' + f.uso.value + '\n' +
+    (f.verba.value.trim() ? 'Quanto pretendo investir: ' + f.verba.value.trim() + '\n' : '') +
+    (qtd > 1 ? 'Quantidade: ' + qtd + '\n' : '') +
+    (extras.length ? 'Quero incluir: ' + extras.join(', ') + '\n' : '') +
+    (f.obs.value.trim() ? 'Detalhes: ' + f.obs.value.trim() : '');
+  var url = wa(msg), m = $('#monteMsg');
+  if (url === '#contato'){ m.textContent = 'O WhatsApp da loja ainda não foi configurado. Use o painel em #admin.'; return; }
+  m.textContent = '';
+  window.open(url, '_blank', 'noopener');
+});
+
+/* ---------- rascunho e publicação ---------- */
+var saveT, pubT;
+function setSaved(txt){ var el = $('#savedLbl'); if (el) el.textContent = txt; }
+function commit(){
+  data.updated = Date.now();
+  setSaved('Salvando...');
+  clearTimeout(saveT);
+  saveT = setTimeout(function(){
+    idbSet('draft', data).then(function(){ setSaved('Rascunho salvo neste navegador'); }).catch(function(){ setSaved('Não foi possível salvar o rascunho. Baixe o site para não perder as mudanças.'); });
+  }, 300);
+  clearTimeout(pubT);
+  pubT = setTimeout(renderPublic, 250);
+}
+function download(name, text, type){
+  var b = new Blob([text], { type: type || 'text/html' });
+  var a = document.createElement('a');
+  a.href = URL.createObjectURL(b); a.download = name;
+  document.body.appendChild(a); a.click();
+  setTimeout(function(){ URL.revokeObjectURL(a.href); a.remove(); }, 800);
+}
+function attrEsc(v){ return String(v).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;'); }
+function buildHTML(){
+  data.updated = Date.now();
+  var json = JSON.stringify(data).replace(/</g, '\\u003c');
+  var html = SOURCE.replace(/(<script id="catalog-data" type="application\/json">)[\s\S]*?(<\/script>)/, function(m, a, b){ return a + json + b; });
+  var title = S().nome + ' | PCs montados e testados';
+  var desc = S().heroTitulo + '. ' + 'Nota fiscal, garantia e teste de bancada. Peça seu orçamento pelo WhatsApp.';
+  html = html.replace(/<title>[\s\S]*?<\/title>/, function(){ return '<title>' + attrEsc(title).replace(/&quot;/g, '"') + '</title>'; });
+  html = html.replace(/(<meta name="description" content=")[^"]*(")/, function(m, a, b){ return a + attrEsc(desc) + b; });
+  html = html.replace(/(<meta property="og:title" content=")[^"]*(")/, function(m, a, b){ return a + attrEsc(title) + b; });
+  return html;
+}
+function fileToDataURL(file, max, q){
+  max = max || 1600; q = q || 0.82;
+  return new Promise(function(res, rej){
+    var r = new FileReader();
+    r.onerror = function(){ rej(r.error); };
+    r.onload = function(){
+      var img = new Image();
+      img.onerror = function(){ rej(new Error('img')); };
+      img.onload = function(){
+        var w = img.width, h = img.height, k = Math.min(1, max / Math.max(w, h));
+        w = Math.round(w * k); h = Math.round(h * k);
+        var c = document.createElement('canvas'); c.width = w; c.height = h;
+        var x = c.getContext('2d'); x.fillStyle = '#fff'; x.fillRect(0, 0, w, h); x.drawImage(img, 0, 0, w, h);
+        res(c.toDataURL('image/jpeg', q));
+      };
+      img.src = r.result;
+    };
+    r.readAsDataURL(file);
+  });
+}
+function addFiles(files, target){
+  var list = Array.prototype.slice.call(files || []); if (!list.length) return;
+  var fails = 0, chain = Promise.resolve();
+  A.note = 'Processando ' + list.length + ' foto(s)...'; renderAdmin();
+  list.forEach(function(f){
+    chain = chain.then(function(){ return fileToDataURL(f); }).then(function(url){
+      if (target === 'model'){ var m = byId(A.sel); if (m){ m.fotos = m.fotos || []; m.fotos.push(url); } }
+      else { data.galeria = data.galeria || []; data.galeria.push({ src: url, legenda: '' }); }
+    }).catch(function(){ fails++; });
+  });
+  chain.then(function(){
+    A.note = fails ? fails + ' foto(s) não puderam ser lidas. Use arquivos JPG, PNG ou WebP.' : '';
+    commit(); renderAdmin();
+  });
+}
+function move(arr, i, d){ var j = i + d; if (j < 0 || j >= arr.length) return; var t = arr[i]; arr[i] = arr[j]; arr[j] = t; }
+
+/* ---------- painel admin ---------- */
+function fld(label, inner, hint, cls){ return '<label class="fld ' + (cls || '') + '">' + label + inner + (hint ? '<small>' + hint + '</small>' : '') + '</label>'; }
+function inp(attr, val, ph){ return '<input ' + attr + ' value="' + esc(val || '') + '"' + (ph ? ' placeholder="' + esc(ph) + '"' : '') + '>'; }
+function area(attr, val, ph){ return '<textarea ' + attr + (ph ? ' placeholder="' + esc(ph) + '"' : '') + '>' + esc(val || '') + '</textarea>'; }
+
+function modelListHTML(){
+  return data.models.map(function(m, i){
+    var p = photos(m)[0];
+    return '<li class="' + (m.id === A.sel ? 'sel' : '') + '"><button class="pick" type="button" data-ad="sel" data-id="' + esc(m.id) + '">' +
+      (p ? '<img src="' + esc(p) + '" alt="">' : '<span class="nophoto"></span>') +
+      '<span><b>' + esc(m.nome || 'Sem nome') + '</b><small>' + lineName(m.linha) + (m.visivel === false ? ' \u2022 oculto' : '') + '</small></span></button>' +
+      '<button class="mini" type="button" data-ad="up" data-i="' + i + '" aria-label="Subir">\u2191</button>' +
+      '<button class="mini" type="button" data-ad="down" data-i="' + i + '" aria-label="Descer">\u2193</button></li>';
+  }).join('');
+}
+function editorHTML(m){
+  var sp = (m.specs || []).map(function(s, i){
+    return '<div class="rowsp"><input data-sp="' + i + '.k" value="' + esc(s.k) + '" placeholder="Item (ex.: Processador)" aria-label="Item"><input data-sp="' + i + '.v" value="' + esc(s.v) + '" placeholder="Valor (ex.: Ryzen 5 5600)" aria-label="Valor"><button class="mini" type="button" data-ad="spec-del" data-i="' + i + '" aria-label="Remover">\u00D7</button></div>';
+  }).join('');
+  var ph = (m.fotos || []).map(function(src, i){
+    var ok = safeSrc(src);
+    return '<div class="pth">' + (ok ? '<img src="' + esc(ok) + '" alt="">' : '') + '<div>' + (i > 0 ? '<button class="btn ghost sm" type="button" data-ad="photo-cover" data-i="' + i + '">Tornar capa</button>' : '<span class="small muted">Capa</span>') + '<button class="btn danger sm" type="button" data-ad="photo-del" data-i="' + i + '">Remover</button></div></div>';
+  }).join('');
+  return '<div class="box"><h2>Editar modelo</h2><div class="ed">' +
+    fld('Nome do modelo', inp('data-m="nome"', m.nome)) +
+    fld('Linha', '<select data-m="linha"><option value="gamer"' + (m.linha === 'gamer' ? ' selected' : '') + '>Gamer</option><option value="corporativo"' + (m.linha === 'corporativo' ? ' selected' : '') + '>Corporativo</option></select>') +
+    fld('Selo (opcional)', inp('data-m="selo"', m.selo, 'Ex.: Novo, Sob encomenda'), 'Etiqueta amarela na foto.') +
+    fld('Preço (opcional)', inp('data-m="preco"', m.preco, 'Ex.: A partir de R$ 3.990'), 'Deixe vazio para mostrar "Valor do dia pelo WhatsApp".') +
+    fld('Resumo: para quem é', area('data-m="resumo"', m.resumo), '', 'full') +
+    '<div class="full"><label style="display:flex;gap:8px;align-items:center;font-weight:400"><input type="checkbox" data-m="visivel"' + (m.visivel !== false ? ' checked' : '') + '> Mostrar no site</label>' +
+    '<label style="display:flex;gap:8px;align-items:center;font-weight:400;margin-top:6px"><input type="checkbox" data-m="destaque"' + (m.destaque ? ' checked' : '') + '> Usar como destaque no topo da página</label></div>' +
+    '</div></div>' +
+    '<div class="box"><h3>Especificações</h3><p class="small muted">Troque pelas peças reais. Os quatro primeiros itens aparecem no cartão; todos aparecem ao abrir o modelo.</p>' + sp +
+    '<button class="btn ghost sm" type="button" data-ad="spec-add">Adicionar item</button></div>' +
+    '<div class="box"><h3>Fotos</h3><p class="small muted">A primeira foto é a capa. As fotos são reduzidas automaticamente para carregar rápido.</p>' +
+    '<div class="upl"><input type="file" id="fileModel" accept="image/*" multiple><input type="text" id="urlModel" placeholder="ou cole o link de uma foto" style="flex:1;min-width:200px;font:inherit;padding:9px 10px;border:1.5px solid var(--line);border-radius:8px"><button class="btn ghost sm" type="button" data-ad="photo-url">Adicionar link</button></div>' +
+    '<div class="pgrid">' + (ph || '<p class="muted">Ainda sem fotos. O site mostra uma ilustração até você adicionar.</p>') + '</div></div>' +
+    '<div class="box" style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn ghost sm" type="button" data-ad="dup">Duplicar modelo</button><button class="btn danger sm" type="button" data-ad="del">Excluir modelo</button></div>';
+}
+function tabModelos(){
+  var m = byId(A.sel);
+  return '<h2>Modelos</h2><p class="lead">Adicione, edite, esconda e reordene os modelos. As mudanças aparecem no site na hora, neste navegador.</p>' +
+    '<div class="ad-split"><div class="box"><ul class="mlist" id="modelList">' + modelListHTML() + '</ul><button class="btn primary sm" type="button" data-ad="new-model">Novo modelo</button></div>' +
+    '<div id="editor">' + (m ? editorHTML(m) : '<div class="box"><p class="muted">Escolha um modelo na lista para editar.</p></div>') + '</div></div>';
+}
+function tabGaleria(){
+  var g = data.galeria || [];
+  var items = g.map(function(x, i){
+    var ok = safeSrc(x.src);
+    return '<div class="pth">' + (ok ? '<img src="' + esc(ok) + '" alt="">' : '') + '<div><input data-gc="' + i + '" value="' + esc(x.legenda) + '" placeholder="Legenda (opcional)" aria-label="Legenda"><button class="mini" type="button" data-ad="gal-left" data-i="' + i + '" aria-label="Mover para trás">\u2190</button><button class="mini" type="button" data-ad="gal-right" data-i="' + i + '" aria-label="Mover para frente">\u2192</button><button class="btn danger sm" type="button" data-ad="gal-del" data-i="' + i + '">Remover</button></div></div>';
+  }).join('');
+  return '<h2>Galeria de montagens</h2><p class="lead">Fotos reais dos PCs que você já montou. A seção só aparece no site quando há fotos.</p>' +
+    '<div class="box"><div class="upl"><input type="file" id="fileGal" accept="image/*" multiple></div><div class="pgrid">' + (items || '<p class="muted">Nenhuma foto na galeria ainda.</p>') + '</div></div>';
+}
+function tabTextos(){
+  var s = S();
+  var warn = waNum() ? '' : '<div class="note warn"><b>Falta o WhatsApp.</b> Sem ele os botões do site não têm para onde levar o cliente. Preencha o campo abaixo.</div>';
+  return '<h2>Textos e contato</h2><p class="lead">O que aparece no topo, no rodapé e nos botões do site.</p>' + warn +
+    '<div class="box"><div class="ed">' +
+    fld('Nome da loja', inp('data-st="nome"', s.nome)) +
+    fld('WhatsApp com DDD', inp('data-st="whatsapp"', s.whatsapp, '54 99999-9999'), 'Só números. O 55 do Brasil é adicionado sozinho.') +
+    fld('Título principal', area('data-st="heroTitulo"', s.heroTitulo), '', 'full') +
+    fld('Texto abaixo do título', area('data-st="heroTexto"', s.heroTexto), '', 'full') +
+    fld('Instagram', inp('data-st="instagram"', s.instagram, '@sualoja')) +
+    fld('Link dos seus anúncios na OLX', inp('data-st="olx"', s.olx, 'https://...')) +
+    fld('Link das avaliações no Google', inp('data-st="google"', s.google, 'https://...')) +
+    fld('E-mail', inp('data-st="email"', s.email)) +
+    fld('Endereço ou cidade', inp('data-st="endereco"', s.endereco)) +
+    fld('Horário de atendimento', inp('data-st="horario"', s.horario, 'Seg a sex, 9h às 18h')) +
+    fld('CNPJ', inp('data-st="cnpj"', s.cnpj), 'Aparece no rodapé.') +
+    fld('Texto da garantia', area('data-st="garantia"', s.garantia), 'Escreva só o que você realmente cumpre e entrega por escrito.', 'full') +
+    fld('Prazo de entrega', area('data-st="prazo"', s.prazo), '', 'full') +
+    '</div></div>';
+}
+function tabPerguntas(){
+  var f = (data.faq || []).map(function(x, i){
+    return '<div class="box"><div class="ed">' + fld('Pergunta', inp('data-fq="' + i + '.q"', x.q), '', 'full') + fld('Resposta', area('data-fq="' + i + '.a"', x.a), '', 'full') + '</div>' +
+      '<div style="display:flex;gap:8px;margin-top:10px"><button class="mini" type="button" data-ad="faq-up" data-i="' + i + '" aria-label="Subir">\u2191</button><button class="mini" type="button" data-ad="faq-down" data-i="' + i + '" aria-label="Descer">\u2193</button><button class="btn danger sm" type="button" data-ad="faq-del" data-i="' + i + '">Remover</button></div></div>';
+  }).join('');
+  return '<h2>Perguntas frequentes</h2><p class="lead">Ajuste as respostas para refletir como a sua loja realmente trabalha.</p>' + f + '<p style="margin-top:16px"><button class="btn primary sm" type="button" data-ad="faq-add">Adicionar pergunta</button></p>';
+}
+function tabPublicar(){
+  var size = new Blob([JSON.stringify(data)]).size, mb = (size / 1048576).toFixed(1);
+  var big = size > 6 * 1048576 ? '<div class="note warn">As fotos já somam ' + mb + ' MB. O site pode ficar pesado. Prefira poucas fotos por modelo ou hospedar as imagens como arquivos e colar o link de cada uma.</div>' : '';
+  return '<h2>Publicar no seu domínio</h2><p class="lead">O painel edita uma cópia no seu navegador. Para as mudanças irem ao ar, baixe o site atualizado e troque o arquivo na hospedagem.</p>' + big +
+    '<div class="box"><ol class="pub"><li>Clique em <b>Baixar site atualizado</b>. Vai baixar um arquivo chamado <b>index.html</b>.</li><li>Entre no painel da sua hospedagem (gerenciador de arquivos ou FTP) e abra a pasta do site.</li><li>Envie o novo <b>index.html</b> no lugar do antigo.</li><li>Abra o seu domínio e atualize a página para conferir.</li></ol>' +
+    '<button class="btn primary" type="button" data-ad="dl-site">Baixar site atualizado</button><p class="small muted" style="margin-top:10px">Tamanho dos dados: ' + mb + ' MB.</p></div>' +
+    '<div class="box"><h3>Backup e rascunho</h3><p class="small muted">O rascunho fica salvo só neste navegador. Guarde um backup para trocar de computador.</p><div class="upl"><button class="btn ghost sm" type="button" data-ad="dl-json">Baixar backup (JSON)</button><label class="btn ghost sm" style="cursor:pointer">Restaurar backup<input type="file" id="fileJson" accept="application/json,.json" hidden></label><button class="btn danger sm" type="button" data-ad="reset">Descartar rascunho e voltar ao arquivo</button></div></div>' +
+    '<div class="box"><h3>Como voltar a este painel</h3><p class="small muted" style="margin:0">Adicione <b>#admin</b> ao final do endereço do site. Exemplo: seudominio.com.br/#admin. Quem abrir esse endereço só altera a própria cópia no navegador. Nada muda para os outros clientes sem você enviar o novo arquivo.</p></div>';
+}
+function renderAdmin(){
+  var tabs = [['modelos', 'Modelos'], ['galeria', 'Galeria'], ['textos', 'Textos e contato'], ['perguntas', 'Perguntas'], ['publicar', 'Publicar']];
+  var body = { modelos: tabModelos, galeria: tabGaleria, textos: tabTextos, perguntas: tabPerguntas, publicar: tabPublicar }[A.tab]();
+  var root = $('#admin');
+  var scroll = root.scrollTop;
+  root.innerHTML = '<div class="ad-top"><strong>Painel do site</strong><span id="savedLbl" class="small muted"></span><a class="btn ghost sm" href="#" data-ad="close">Ver o site</a></div>' +
+    '<div class="ad-tabs" role="tablist">' + tabs.map(function(t){ return '<button type="button" role="tab" data-tab="' + t[0] + '" aria-selected="' + (A.tab === t[0]) + '">' + t[1] + '</button>'; }).join('') + '</div>' +
+    '<div class="ad-body">' + (A.note ? '<div class="note">' + esc(A.note) + '</div>' : '') + body + '</div>';
+  root.scrollTop = scroll;
+}
+function refreshList(){ var l = $('#modelList'); if (l) l.innerHTML = modelListHTML(); }
+
+var admin = $('#admin');
+admin.addEventListener('click', function(e){
+  var tb = e.target.closest('[data-tab]');
+  if (tb){ A.tab = tb.getAttribute('data-tab'); A.note = ''; renderAdmin(); return; }
+  var b = e.target.closest('[data-ad]'); if (!b) return;
+  var act = b.getAttribute('data-ad'), i = parseInt(b.getAttribute('data-i'), 10), id = b.getAttribute('data-id');
+  var m = byId(A.sel);
+  if (act === 'close'){ e.preventDefault(); leaveAdmin(); return; }
+  if (act === 'sel'){ A.sel = id; renderAdmin(); return; }
+  if (act === 'up' || act === 'down'){ move(data.models, i, act === 'up' ? -1 : 1); commit(); renderAdmin(); return; }
+  if (act === 'new-model'){
+    var n = { id: uid(), nome: 'Novo modelo', linha: 'gamer', selo: '', resumo: 'Descreva para quem é este PC.', preco: '', visivel: true, destaque: false, fotos: [], specs: [{ k: 'Processador', v: '' }, { k: 'Placa de vídeo', v: '' }, { k: 'Memória', v: '' }, { k: 'Armazenamento', v: '' }] };
+    data.models.push(n); A.sel = n.id; commit(); renderAdmin(); return;
+  }
+  if (act === 'dup' && m){
+    var c = JSON.parse(JSON.stringify(m)); c.id = uid(); c.nome = m.nome + ' (cópia)'; c.destaque = false;
+    data.models.splice(data.models.indexOf(m) + 1, 0, c); A.sel = c.id; commit(); renderAdmin(); return;
+  }
+  if (act === 'del' && m){
+    if (!confirm('Excluir o modelo "' + m.nome + '"? Isso não pode ser desfeito.')) return;
+    data.models.splice(data.models.indexOf(m), 1); A.sel = null; commit(); renderAdmin(); return;
+  }
+  if (act === 'spec-add' && m){ (m.specs = m.specs || []).push({ k: '', v: '' }); commit(); renderAdmin(); return; }
+  if (act === 'spec-del' && m){ m.specs.splice(i, 1); commit(); renderAdmin(); return; }
+  if (act === 'photo-del' && m){ m.fotos.splice(i, 1); commit(); renderAdmin(); return; }
+  if (act === 'photo-cover' && m){ var ph = m.fotos.splice(i, 1)[0]; m.fotos.unshift(ph); commit(); renderAdmin(); return; }
+  if (act === 'photo-url' && m){
+    var u = $('#urlModel').value.trim();
+    if (!safeSrc(u)){ A.note = 'O link precisa começar com http:// ou https:// e apontar para uma imagem.'; renderAdmin(); return; }
+    (m.fotos = m.fotos || []).push(u); A.note = ''; commit(); renderAdmin(); return;
+  }
+  if (act === 'gal-del'){ data.galeria.splice(i, 1); commit(); renderAdmin(); return; }
+  if (act === 'gal-left'){ move(data.galeria, i, -1); commit(); renderAdmin(); return; }
+  if (act === 'gal-right'){ move(data.galeria, i, 1); commit(); renderAdmin(); return; }
+  if (act === 'faq-add'){ data.faq.push({ q: 'Nova pergunta', a: '' }); commit(); renderAdmin(); return; }
+  if (act === 'faq-del'){ data.faq.splice(i, 1); commit(); renderAdmin(); return; }
+  if (act === 'faq-up'){ move(data.faq, i, -1); commit(); renderAdmin(); return; }
+  if (act === 'faq-down'){ move(data.faq, i, 1); commit(); renderAdmin(); return; }
+  if (act === 'dl-site'){
+    var html = buildHTML();
+    idbSet('draft', data).catch(function(){});
+    download('index.html', html, 'text/html');
+    A.note = 'Arquivo baixado. Agora envie o index.html para a sua hospedagem, no lugar do antigo.'; renderAdmin(); return;
+  }
+  if (act === 'dl-json'){ download('backup-site-' + new Date().toISOString().slice(0, 10) + '.json', JSON.stringify(data), 'application/json'); return; }
+  if (act === 'reset'){
+    if (!confirm('Descartar todas as mudanças feitas neste navegador e voltar ao conteúdo do arquivo?')) return;
+    idbDel('draft').then(function(){ location.reload(); }).catch(function(){ location.reload(); });
+  }
+});
+admin.addEventListener('input', function(e){
+  var t = e.target, m, p;
+  if (t.hasAttribute('data-m')){
+    m = byId(A.sel); if (!m) return;
+    var k = t.getAttribute('data-m');
+    m[k] = t.type === 'checkbox' ? t.checked : t.value;
+    if (k === 'destaque' && t.checked) data.models.forEach(function(x){ if (x !== m) x.destaque = false; });
+    commit();
+  } else if (t.hasAttribute('data-sp')){
+    p = t.getAttribute('data-sp').split('.'); m = byId(A.sel); if (!m) return;
+    m.specs[parseInt(p[0], 10)][p[1]] = t.value; commit();
+  } else if (t.hasAttribute('data-st')){
+    S()[t.getAttribute('data-st')] = t.value; commit();
+  } else if (t.hasAttribute('data-gc')){
+    data.galeria[parseInt(t.getAttribute('data-gc'), 10)].legenda = t.value; commit();
+  } else if (t.hasAttribute('data-fq')){
+    p = t.getAttribute('data-fq').split('.'); data.faq[parseInt(p[0], 10)][p[1]] = t.value; commit();
+  }
+});
+admin.addEventListener('change', function(e){
+  var t = e.target;
+  if (t.hasAttribute('data-m')) refreshList();
+  if (t.id === 'fileModel'){ addFiles(t.files, 'model'); }
+  if (t.id === 'fileGal'){ addFiles(t.files, 'galeria'); }
+  if (t.id === 'fileJson' && t.files[0]){
+    var r = new FileReader();
+    r.onload = function(){
+      try{
+        var o = JSON.parse(r.result);
+        if (!o || !Array.isArray(o.models) || !o.settings) throw new Error('formato');
+        data = o; data.galeria = data.galeria || []; data.faq = data.faq || []; A.sel = null;
+        A.note = 'Backup restaurado.'; commit(); renderAdmin();
+      }catch(err){ A.note = 'Esse arquivo não parece ser um backup deste site.'; renderAdmin(); }
+    };
+    r.readAsText(t.files[0]);
+  }
+});
+
+function leaveAdmin(){
+  try{ history.pushState(null, '', location.pathname + location.search); route(); }
+  catch(err){ location.hash = ''; route(); }
+}
+function route(){
+  var open = location.hash === '#admin';
+  admin.hidden = !open;
+  document.body.classList.toggle('noscroll', open);
+  if (open){
+    if (!A.sel && data.models[0]) A.sel = data.models[0].id;
+    renderAdmin();
+  }
+}
+window.addEventListener('hashchange', route);
+document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && !admin.hidden && !dlg.open && !lbx.open) leaveAdmin(); });
+
+/* ---------- início ---------- */
+function start(){ renderPublic(); route(); }
+var started = false;
+function go(){ if (started) return; started = true; start(); }
+setTimeout(go, 1200);
+idbGet('draft').then(function(d){
+  if (d && d.updated > data.updated && Array.isArray(d.models) && d.settings){ data = d; data.galeria = data.galeria || []; data.faq = data.faq || []; }
+}).catch(function(){}).then(function(){ if (started){ renderPublic(); route(); } else { go(); } });
+})();
+</script>
 </body>
 </html>
