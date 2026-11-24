@@ -1013,7 +1013,7 @@ admin.addEventListener('change', function(e){
   }
 });
 
-var ADMIN_HASH = '5802307294fb189ec33360a370eaf46cd10569723c9bad7fa6b2ba8c234f60c2';
+var ADMIN_HASH = '31bf25dac8066893bd400b150d64c516f19a1ec3abe3dce63cdcacadfc05613a';
 function sha256hex(str){
   var enc = new TextEncoder().encode(str);
   return crypto.subtle.digest('SHA-256', enc).then(function(buf){
